@@ -67,11 +67,11 @@ The two TS servers each maintain a key which is used to create a digest from the
 challenge. In our running example, that key is either "k1234" or "k5678". Here
 are two sample responses from TS1 and TS2:
 
-83cdae16a693560b34bac1f64b7cf10a
 # from ts1.edu
+83cdae16a693560b34bac1f64b7cf10a
 
-60f30e6935a8476d8277d465500fd38f
 # from ts2.edu
+60f30e6935a8476d8277d465500fd38f
 
 Once AS receives the two digests from TS1 and TS2, it compares them with the
 client's digest. Exactly one of the TS digests will match with that of the
