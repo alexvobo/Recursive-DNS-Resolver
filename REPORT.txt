@@ -1,0 +1,33 @@
+0. Please write down the full names and netids of all your team members.
+        Alexsandr Vobornov - av510
+
+1. Briefly discuss how you implemented the challenge-response functionality and
+   the authenticated DNS query.
+   -Both TS programs run two threads, one to connect to the authentication server and one to connect to the client.
+   -The authentication server program keeps a connection open with both TS servers and sends them data whenever
+      there's a client connected, who is also sending data.
+   -The client program connects to the server, sending a challenge and digest, and the server matches up the proper
+      TS hostname based on whichever server responds with the right digest given a challenge phrase.
+   -Instead of sending the port over with the hostname I sent a "1" or a "2" depending on which TS was selected by AS
+      so the client program could figure out the proper port for the host.
+   -The rest of the implementation (client connecting to TS and receiving a response to a query) is the same as
+      what I did for projects 1 and 2.
+
+2. Are there known issues or functions that aren't working currently in your
+   attached code? If so, explain.
+   -The program outputs exactly as it should.
+
+3. What problems did you face developing code for this project?
+   -Socket was yelling at me that I couldn't use more than one "localhost" parameter so I had to use 127.0.0.1
+   -Newline char was being factored into hmac and was spitting out the wrong digest
+   -Most of my time went into figuring out how to structure the TS and AS programs.
+
+4. What did you learn by working on this project?
+    -I learned about how to run multiple threads in python and have multiple
+       servers communicate with multiple client programs, as well as how to implement a challenge-response protocol.
+    -Conceptually it was quite challenging at first because I had no idea how to implement multiple threads in this
+       type of application, however I read the instruction doc multiple times and it got easier to
+       understand every time I read it.
+    -Running my code via PyCharm (python 2.7) made my life significantly easier
+       because I was able to save the port/hostname parameters as a config and press 1 button to rerun everything.
+       I was going mad opening up new cmd windows every time I had to rerun my code when I was using VScode.
